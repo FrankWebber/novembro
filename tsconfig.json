@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "composite": true,           // Necessário para projetos referenciados
+    "noEmit": false,             // Garantir que o código será gerado para uso nos outros projetos
+    "target": "ES2020",
+    "module": "CommonJS",        // Definir módulo como CommonJS para o Node.js
+    "moduleResolution": "node",  // Utilizar resolução de módulo padrão do Node.js
+    "outDir": "./dist",          // Diretório de saída para os arquivos gerados
+    "strict": true,              // Habilitar verificações rigorosas do TypeScript
+    "esModuleInterop": true,     // Garantir compatibilidade de módulos ES com CommonJS
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true         // Ignorar verificação de tipos das bibliotecas para melhorar a performance
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

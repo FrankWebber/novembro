@@ -1,0 +1,26 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2020",                         // Define ES2020 como target para suportar recursos modernos.
+    "useDefineForClassFields": true,            // Utilizar `define` para campos de classes.
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],                                          // Bibliotecas de suporte ao DOM e ECMAScript 2020.
+    "module": "ESNext",                         // Define o tipo de módulo como ESNext, compatível com ESM.
+    "skipLibCheck": true,                       // Ignorar a verificação de tipos das bibliotecas para ganhar desempenho.
+    "moduleResolution": "node",                 // Utiliza resolução de módulo padrão do Node.js.
+    "isolatedModules": true,                    // Garante que cada arquivo seja tratado como módulo isolado.
+    "jsx": "react-jsx",                         // Suporte JSX para React com nova sintaxe (React 17+).
+    "strict": true,                             // Ativar verificação rigorosa de tipos para evitar erros comuns.
+    "noUnusedLocals": true,                     // Marcar variáveis não utilizadas como erro.
+    "noUnusedParameters": true,                 // Marcar parâmetros não utilizados como erro.
+    "noFallthroughCasesInSwitch": true,         // Prevenir falhas de caso não tratado em `switch`.
+    "composite": true,                          // Necessário para projetos referenciados.
+    "noEmit": false,                            // Habilitar a emissão de código.
+    "outDir": "./dist"                          // Diretório de saída dos arquivos transpilados.
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],   // Incluir todos os arquivos `.ts` e `.tsx` no diretório `src`.
+  "exclude": ["node_modules", "dist"]           // Excluir `node_modules` e `dist` para evitar processamento desnecessário.
+}

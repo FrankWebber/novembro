@@ -1,0 +1,49 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"  # Porta do host mapeada para o contêiner
+    volumes:
+      - .:/app  # Sincroniza o código do projeto com o contêiner durante o desenvolvimento
+      - /app/node_modules  # Evita conflitos com os módulos
+    environment:
+      - NODE_ENV=production
+      - VITE_API_URL=http://localhost:3000 # Ajustar para a URL da API do backend se necessário
+    networks:
+      - monitore_network
+    restart: always  # Reinicia automaticamente se o contêiner falhar
+
+  postgres:
+    image: postgres:13  # Usando a imagem oficial do PostgreSQL
+    container_name: monitore_postgres
+    environment:
+      POSTGRES_USER: webber  # Usuário do banco de dados
+      POSTGRES_PASSWORD: webber  # Senha do banco de dados
+      POSTGRES_DB: bases  # Nome do banco de dados
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Volume para persistência dos dados do banco
+    ports:
+      - "5432:5432"  # Porta para conectar ao banco de dados
+    networks:
+      - monitore_network
+    restart: unless-stopped  # Reinicia automaticamente se o contêiner parar
+
+  adminer:
+    image: adminer
+    container_name: monitore_adminer
+    ports:
+      - "8080:8080"  # Adminer acessível através da porta 8080
+    depends_on:
+      - postgres
+    networks:
+      - monitore_network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  monitore_network:
+    driver: bridge
