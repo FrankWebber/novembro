@@ -7,12 +7,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Diretórios de dependências
 node_modules
+
+# Build e diretórios de output
 dist
 dist-ssr
 *.local
 
-# Editor directories and files
+# Arquivos e diretórios específicos do editor
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -22,3 +25,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Outros arquivos e diretórios que podem ser específicos ao seu projeto
+
+# Exemplo: Ignore arquivos de configuração específicos do ambiente
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Exemplo: Ignore arquivos gerados pelo sistema operacional
+Thumbs.db
