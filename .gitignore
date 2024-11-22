@@ -27,6 +27,7 @@ dist-ssr
 *.sw?
 
 # Outros arquivos e diretórios que podem ser específicos ao seu projeto
+# - Remova monitore/.git para evitar problemas como submódulos acidentais.
 
 # Exemplo: Ignore arquivos de configuração específicos do ambiente
 .env
